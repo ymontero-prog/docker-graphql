@@ -21,8 +21,6 @@ jobs:
     - name: Git Semantic Version
       uses: PaulHatch/semantic-version@v4.0.3
       with:
-        # The prefix to use to identify tags
-        tag_prefix: "v"
         major_pattern: "(MAJOR)"
         minor_pattern: "(MINOR)"
         format: "${major}.${minor}.${patch}-prerelease${increment}"
@@ -32,11 +30,11 @@ jobs:
       env: 
           DOCKER_USER: ${{secrets.DOCKER_USER}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-          NEW_VERSION: ${{ step.version.output.version }}
+          NEW_VERSION: ${{ step.version.outputs.version }}
           
       run: |
                docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-                echo " New Vwersion: $NEW_VERSION!!!!"
+                echo " New Version: $NEW_VERSION!!!!"
         
 #    - name: Build Docker image
 #      run: |
