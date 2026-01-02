@@ -28,7 +28,9 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -t ymontero46/docker-graphql:0.0.2 .
+        docker build -t ymontero46/docker-graphql:latest .
 
     - name: Push Docker Image
       run: |
         docker push ymontero46/docker-graphql:0.0.2
+        docker push ymontero46/docker-graphql:latest
